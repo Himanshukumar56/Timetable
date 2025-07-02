@@ -50,9 +50,8 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
-
 
 // Derive appId from firebaseConfig.appId (or use a default if not present)
 // This is used for Firestore collection paths to scope data to the current application.
@@ -79,122 +78,87 @@ const addIdsToTasks = (schedule) => {
 // This data serves as the default structure for the study timetable.
 const initialWeeklyScheduleData = addIdsToTasks({
   Monday: {
-    title: "GS1 + PSIR Core",
+    title: "Daily Study Plan",
     tasks: [
-      { time: "7:00 – 8:00", activity: "Wake up + Freshen up + Newspaper" },
-      { time: "8:00 – 9:30", activity: "Polity & Constitution" },
-      { time: "9:40 – 11:10", activity: "PSIR Paper I – Political Theories" },
-      { time: "11:20 – 12:50", activity: "Geography – Physical + Mapping" },
-      { time: "2:15 – 3:45", activity: "Post-Independence India" },
-      { time: "3:55 – 5:25", activity: "Science & Tech (Static + Current)" },
-      { time: "5:35 – 7:05", activity: "Current Affairs – Notes & Analysis" },
-      { time: "7:15 – 8:45", activity: "CSAT – Reasoning" },
-      { time: "9:45 – 11:15", activity: "PSIR Optional – Thinkers" },
-      { time: "11:25 – 12:00", activity: "Light reading / Ethics snippet" },
+      { time: "07:00 - 08:00", activity: "Wake up + Newspaper" },
+      { time: "08:00 - 11:00", activity: "Geography + Mapping" },
+      { time: "11:15 - 14:15", activity: "PSIR Paper I - Political Theories" },
+      { time: "15:30 - 18:30", activity: "Post-Independence India" },
+      { time: "18:30 - 20:00", activity: "Evening Walk / Break" },
+      { time: "20:00 - 23:00", activity: "Current Affairs" },
+      { time: "23:00 - 00:00", activity: "MCQ Practice" },
     ],
   },
   Tuesday: {
-    title: "History & PSIR",
+    title: "CSAT Focus Day",
     tasks: [
-      { time: "7:00 – 8:00", activity: "Wake up + Freshen up + Newspaper" },
-      { time: "8:00 – 9:30", activity: "Modern History (Spectrum)" },
-      {
-        time: "9:40 – 11:10",
-        activity: "PSIR Paper II – Indian Foreign Policy",
-      },
-      { time: "11:20 – 12:50", activity: "Geography – Economic + Mapping" },
-      { time: "2:15 – 3:45", activity: "Medieval History" },
-      { time: "3:55 – 5:25", activity: "Environment + Current Affairs" },
-      { time: "5:35 – 7:05", activity: "Current Affairs – Revision" },
-      { time: "7:15 – 8:45", activity: "CSAT – Maths" },
-      { time: "9:45 – 11:15", activity: "PSIR Optional – Paper II Notes" },
-      { time: "11:25 – 12:00", activity: "Magazines / Light Reading" },
+      { time: "07:00 - 08:00", activity: "Wake up + Newspaper" },
+      { time: "08:00 - 11:00", activity: "Geography + Mapping" },
+      { time: "11:15 - 14:15", activity: "PSIR Paper I - Political Theories" },
+      { time: "15:30 - 18:30", activity: "Post-Independence India" },
+      { time: "18:30 - 20:00", activity: "Evening Walk / Break" },
+      { time: "20:00 - 23:00", activity: "CSAT Practice" },
+      { time: "23:00 - 00:00", activity: "MCQ Practice" },
     ],
   },
   Wednesday: {
-    title: "GS Mix + Optional",
+    title: "Daily Study Plan",
     tasks: [
-      { time: "7:00 – 8:00", activity: "Wake up + Freshen up + Newspaper" },
-      { time: "8:00 – 9:30", activity: "Ancient History" },
-      {
-        time: "9:40 – 11:10",
-        activity: "PSIR Paper I – Indian Political Thought",
-      },
-      { time: "11:20 – 12:50", activity: "Agriculture + Economy Basics" },
-      { time: "2:15 – 3:45", activity: "Society (GS1)" },
-      { time: "3:55 – 5:25", activity: "Science & Tech (PYQs + Trends)" },
-      { time: "5:35 – 7:05", activity: "Current Affairs – Editorial Notes" },
-      { time: "7:15 – 8:45", activity: "CSAT – Comprehension" },
-      { time: "9:45 – 11:15", activity: "PSIR Optional – Answer Writing" },
-      { time: "11:25 – 12:00", activity: "Interview questions / Ethics" },
+      { time: "07:00 - 08:00", activity: "Wake up + Newspaper" },
+      { time: "08:00 - 11:00", activity: "Geography + Mapping" },
+      { time: "11:15 - 14:15", activity: "PSIR Paper I - Political Theories" },
+      { time: "15:30 - 18:30", activity: "Post-Independence India" },
+      { time: "18:30 - 20:00", activity: "Evening Walk / Break" },
+      { time: "20:00 - 23:00", activity: "Current Affairs" },
+      { time: "23:00 - 00:00", activity: "MCQ Practice" },
     ],
   },
   Thursday: {
-    title: "Essay + IR Focus",
+    title: "Daily Study Plan",
     tasks: [
-      { time: "7:00 – 8:00", activity: "Wake up + Freshen up + Newspaper" },
-      { time: "8:00 – 9:30", activity: "Essay Practice" },
-      { time: "9:40 – 11:10", activity: "PSIR Paper II – World Politics" },
-      { time: "11:20 – 12:50", activity: "Geography – Mapping & Revision" },
-      { time: "2:15 – 3:45", activity: "Governance (GS2)" },
-      { time: "3:55 – 5:25", activity: "IR Current Events + Notes" },
-      {
-        time: "5:35 – 7:05",
-        activity: "Current Affairs – Government Schemes",
-      },
-      { time: "7:15 – 8:45", activity: "CSAT – Alt day Practice" },
-      { time: "9:45 – 11:15", activity: "PSIR Answer Writing + Revision" },
-      { time: "11:25 – 12:00", activity: "World Map / IR Timeline" },
+      { time: "07:00 - 08:00", activity: "Wake up + Newspaper" },
+      { time: "08:00 - 11:00", activity: "Geography + Mapping" },
+      { time: "11:15 - 14:15", activity: "PSIR Paper I - Political Theories" },
+      { time: "15:30 - 18:30", activity: "Post-Independence India" },
+      { time: "18:30 - 20:00", activity: "Evening Walk / Break" },
+      { time: "20:00 - 23:00", activity: "Current Affairs" },
+      { time: "23:00 - 00:00", activity: "MCQ Practice" },
     ],
   },
   Friday: {
-    title: "Environment + PSIR",
+    title: "CSAT Focus Day",
     tasks: [
-      { time: "7:00 – 8:00", activity: "Wake up + Freshen up + Newspaper" },
-      { time: "8:00 – 9:30", activity: "Environment – Static + Dynamic" },
-      {
-        time: "9:40 – 11:10",
-        activity: "PSIR Paper I – Comparative Politics",
-      },
-      {
-        time: "11:20 – 12:50",
-        activity: "Mapping – World + India Geography",
-      },
-      { time: "2:15 – 3:45", activity: "Disaster Management" },
-      { time: "3:55 – 5:25", activity: "Revision – IR, Polity, History" },
-      { time: "5:35 – 7:05", activity: "Current Affairs – Economic Survey" },
-      { time: "7:15 – 8:45", activity: "CSAT – Full Length Practice" },
-      { time: "9:45 – 11:15", activity: "PSIR Writing Practice" },
-      { time: "11:25 – 12:00", activity: "Economic Affairs – PIB Notes" },
+      { time: "07:00 - 08:00", activity: "Wake up + Newspaper" },
+      { time: "08:00 - 11:00", activity: "Geography + Mapping" },
+      { time: "11:15 - 14:15", activity: "PSIR Paper I - Political Theories" },
+      { time: "15:30 - 18:30", activity: "Post-Independence India" },
+      { time: "18:30 - 20:00", activity: "Evening Walk / Break" },
+      { time: "20:00 - 23:00", activity: "CSAT Practice" },
+      { time: "23:00 - 00:00", activity: "MCQ Practice" },
     ],
   },
   Saturday: {
-    title: "Mixed Revision + Tests",
+    title: "Weekend Practice Day",
     tasks: [
-      { time: "7:00 – 8:00", activity: "Wake up + Freshen up + Newspaper" },
-      { time: "8:00 – 9:30", activity: "PSIR Test (Sectional)" },
-      { time: "9:40 – 11:10", activity: "PYQ Practice – GS" },
-      { time: "11:20 – 12:50", activity: "Map Practice + IR Revision" },
-      { time: "2:15 – 3:45", activity: "Essay Writing / Feedback Review" },
-      { time: "3:55 – 5:25", activity: "CSAT – Mock" },
-      { time: "5:35 – 7:05", activity: "Ethics – Case Study Practice" },
-      { time: "7:15 – 8:45", activity: "Current Affairs Monthly Revision" },
-      { time: "9:45 – 11:15", activity: "PSIR Revision" },
-      { time: "11:25 – 12:00", activity: "Relax + Light Reading" },
+      { time: "07:00 - 08:00", activity: "Wake up + Newspaper" },
+      { time: "08:00 - 11:00", activity: "Full-Length Test Practice" },
+      { time: "11:15 - 14:15", activity: "Test Analysis + PYQs" },
+      { time: "15:30 - 18:30", activity: "Essay Practice + Ethics" },
+      { time: "18:30 - 20:00", activity: "Evening Walk / Break" },
+      { time: "20:00 - 23:00", activity: "Monthly CA + Notes Cleanup" },
+      { time: "23:00 - 00:00", activity: "MCQ Practice" },
     ],
   },
   Sunday: {
-    title: "Full Test Day + Reflection",
+    title: "Weekend Practice Day",
     tasks: [
-      { time: "7:00 – 8:00", activity: "Wake up + Freshen up + Light News" },
-      { time: "8:00 – 11:00", activity: "Full-length GS/Optional Test" },
-      { time: "11:15 – 1:00", activity: "Test Analysis + Mistake Log" },
-      { time: "2:15 – 3:45", activity: "Essay Practice" },
-      { time: "3:55 – 5:25", activity: "Mapping Practice + World Events" },
-      { time: "5:35 – 7:05", activity: "Ethics or Interview Practice" },
-      { time: "7:15 – 8:45", activity: "Current Affairs Summary (Week)" },
-      { time: "9:45 – 11:15", activity: "PSIR / Notes Cleanup + Plan Week" },
-      { time: "11:15 – 12:00", activity: "Light Reading or Sleep Early" },
+      { time: "07:00 - 08:00", activity: "Wake up + Newspaper" },
+      { time: "08:00 - 11:00", activity: "Full-Length Test Practice" },
+      { time: "11:15 - 14:15", activity: "Test Analysis + PYQs" },
+      { time: "15:30 - 18:30", activity: "Essay Practice + Ethics" },
+      { time: "18:30 - 20:00", activity: "Evening Walk / Break" },
+      { time: "20:00 - 23:00", activity: "Monthly CA + Notes Cleanup" },
+      { time: "23:00 - 00:00", activity: "MCQ Practice" },
     ],
   },
 });
@@ -484,7 +448,10 @@ const StudyTracker = () => {
         errorMessage = "Please enter a valid email address.";
       } else if (error.code === "auth/weak-password") {
         errorMessage = "Password should be at least 6 characters long.";
-      } else if (error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
+      } else if (
+        error.code === "auth/user-not-found" ||
+        error.code === "auth/wrong-password"
+      ) {
         errorMessage = "Invalid email or password.";
       }
       setAuthError(errorMessage);
@@ -951,19 +918,29 @@ const StudyTracker = () => {
               onClick={handleAuth}
               className="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center space-x-2"
             >
-              {isRegistering ? <UserPlus className="w-5 h-5" /> : <Mail className="w-5 h-5" />}
-              <span>{isRegistering ? "Register with Email" : "Login with Email"}</span>
+              {isRegistering ? (
+                <UserPlus className="w-5 h-5" />
+              ) : (
+                <Mail className="w-5 h-5" />
+              )}
+              <span>
+                {isRegistering ? "Register with Email" : "Login with Email"}
+              </span>
             </button>
             <div className="relative flex py-5 items-center">
-                <div className="flex-grow border-t border-gray-600"></div>
-                <span className="flex-shrink mx-4 text-gray-400">OR</span>
-                <div className="flex-grow border-t border-gray-600"></div>
+              <div className="flex-grow border-t border-gray-600"></div>
+              <span className="flex-shrink mx-4 text-gray-400">OR</span>
+              <div className="flex-grow border-t border-gray-600"></div>
             </div>
             <button
               onClick={handleGoogleSignIn}
               className="w-full p-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center space-x-2"
             >
-              <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" className="w-5 h-5" />
+              <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                alt="Google logo"
+                className="w-5 h-5"
+              />
               <span>Sign in with Google</span>
             </button>
           </div>
@@ -1005,8 +982,8 @@ const StudyTracker = () => {
         <div className="flex flex-wrap justify-center sm:justify-end gap-3">
           <button
             onClick={() => {
-                setNewNote(''); // Clear new note input when opening modal for adding
-                setShowNotes(true);
+              setNewNote(""); // Clear new note input when opening modal for adding
+              setShowNotes(true);
             }}
             className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-sm"
           >
