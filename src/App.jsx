@@ -85,6 +85,7 @@ const App = () => {
     userId,
     userName,
     authError,
+    loading,
     handleRegister,
     handleLogin,
     handleGoogleSignIn,
@@ -469,6 +470,39 @@ const App = () => {
     [userId, deleteScheduleTemplate] // Dependency array updated
   );
 
+  if (loading) {
+    return (
+      <div
+        className={`min-h-screen flex flex-col items-center justify-center ${themeClasses.primaryBg} ${themeClasses.primaryText}`}
+      >
+        <Loader2 className="w-16 h-16 animate-spin" />
+        <p className="mt-4 text-lg">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!userId) {
+    return (
+      <AuthModal
+        onClose={() => {}} // No close button when it's the main view
+        isRegistering={isRegistering}
+        setIsRegistering={setIsRegistering}
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        authError={authError}
+        handleAuthSubmit={handleAuthSubmit}
+        handleGoogleSignIn={handleGoogleSignIn}
+        userId={userId}
+        userName={userName}
+        handleLogout={handleLogout}
+        setAuthError={setAuthError}
+        isModal={false} // Make it a full page
+      />
+    );
+  }
+
   return (
     <div
       className={`min-h-screen flex flex-col ${themeClasses.primaryBg} ${themeClasses.primaryText}`}
@@ -491,6 +525,7 @@ const App = () => {
         showDropdown={showDropdown}
         setShowDropdown={setShowDropdown}
         currentStreak={currentStreak}
+        handleLogout={handleLogout}
       />
 
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -593,6 +628,22 @@ const App = () => {
           userName={userName}
           handleLogout={handleLogout}
           setAuthError={setAuthError}
+        />
+      )}
+      {showDailyTaskModal && (
+        <DailyTaskModal
+          day={currentDay}
+          tasks={weeklySchedule[currentDay]?.tasks || []}
+          onClose={() => setShowDailyTaskModal(false)}
+          onSaveTasks={(updatedTasks) =>
+            handleSaveDailyTasks(currentDay, updatedTasks)
+          }
+          editingTask={editingTask}
+          setEditingTask={setEditingTask}
+          newTaskTime={newTaskTime}
+          setNewTaskTime={setNewTaskTime}
+          newTaskActivity={newTaskActivity}
+          setNewTaskActivity={setNewTaskActivity}
         />
       )}
       {showDailyTaskModal && (

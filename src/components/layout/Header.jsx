@@ -34,6 +34,7 @@ const Header = ({
   showDropdown,
   setShowDropdown,
   currentStreak,
+  handleLogout,
 }) => {
   const { themeClasses } = useTheme();
 
@@ -190,6 +191,18 @@ const Header = ({
                 {userName === "Guest" ? "Login / Register" : userName}
               </span>
             </button>
+            {userName !== "Guest" && (
+              <button
+                onClick={() => {
+                  handleLogout();
+                  closeDropdown();
+                }}
+                className={`flex items-center space-x-2 px-4 py-2 text-sm text-red-500 hover:${themeClasses.tertiaryBg} w-full text-left`}
+              >
+                <LogOut className="w-5 h-5" />
+                <span>Logout</span>
+              </button>
+            )}
           </div>
         )}
         </div>
