@@ -1,0 +1,26 @@
+export const themes = {
+  dark: {
+    primaryBg: "bg-gray-900",
+    secondaryBg: "bg-gray-800",
+    tertiaryBg: "bg-gray-700",
+    primaryText: "text-white",
+    secondaryText: "text-gray-400",
+    accent: "text-blue-400",
+    accentBg: "bg-blue-600",
+    accentHover: "hover:bg-blue-700",
+    border: "border-gray-700",
+    shadow: "shadow-xl",
+  },
+  light: {
+    primaryBg: "bg-gray-100",
+    secondaryBg: "bg-white",
+    tertiaryBg: "bg-gray-200",
+    primaryText: "text-gray-900",
+    secondaryText: "text-gray-600",
+    accent: "text-blue-600",
+    accentBg: "bg-blue-500",
+    accentHover: "hover:bg-blue-600",
+    border: "border-gray-300",
+    shadow: "shadow-md",
+  },
+};
