@@ -169,15 +169,6 @@ const Header = ({
               <Calendar className="w-5 h-5" />
               <span>Exams</span>
             </button>
-            <a
-              href="https://e-journal-jade.vercel.app/journals"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center space-x-2 px-4 py-2 text-sm ${themeClasses.primaryText} hover:${themeClasses.tertiaryBg} w-full text-left`}
-            >
-              <Book className="w-5 h-5" />
-              <span>E-Journal</span>
-            </a>
             <div className="border-t border-gray-600 my-1"></div>
             <button
               onClick={() => {
